@@ -1,4 +1,2 @@
-package com.revature.developercorner.data;
-
-public class MessageRepository {
+package com.revature.developercorner.data;public interface MessageRepository {
 }

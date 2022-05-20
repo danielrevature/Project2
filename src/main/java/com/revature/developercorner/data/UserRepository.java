@@ -1,4 +1,2 @@
-package com.revature.developercorner.data;
-
-public class UserRepository {
+package com.revature.developercorner.data;public interface UserRepository {
 }

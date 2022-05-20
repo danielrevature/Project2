@@ -1,4 +1,2 @@
-package com.revature.developercorner.data;
-
-public class QuestionRepository {
+package com.revature.developercorner.data;public interface QuestionRepository {
 }
