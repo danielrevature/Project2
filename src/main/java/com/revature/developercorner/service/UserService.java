@@ -30,6 +30,20 @@ public class UserService {
 
 
 
+    public void user_LogIn(User user){
+        // check to see if user already exist:
+        Optional<User> user_By_Email = UserRepository.find_User_By_Email(user.getEMail());
+        if(!user_By_Email.isPresent()){
+            throw new IllegalStateException("The Email you used is not registered!");
+        }
+
+
+
+
+        UserRepository.save(user);
+
+
+    }
 
 
 
