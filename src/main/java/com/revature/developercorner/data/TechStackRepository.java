@@ -1,4 +1,9 @@
 package com.revature.developercorner.data;
 
-public class TechStackRepository {
+import com.revature.developercorner.entity.TechStack;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+@Repository
+public interface TechStackRepository extends JpaRepository<TechStack, Long>{
 }

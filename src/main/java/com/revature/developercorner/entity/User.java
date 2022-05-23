@@ -3,6 +3,7 @@ package com.revature.developercorner.entity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 import javax.persistence.*;
 
@@ -11,7 +12,7 @@ import javax.persistence.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-
+@ToString
 @Table(name = "users")
 public class User {
     @Id

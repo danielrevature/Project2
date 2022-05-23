@@ -1,8 +1,5 @@
 package com.revature.developercorner.service;
 
-import com.revature.developercorner.data.QuestionRepository;
-import com.revature.developercorner.data.TechStackRepository;
-import com.revature.developercorner.entity.Question;
 import com.revature.developercorner.entity.TechStack;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -11,6 +8,7 @@ import java.util.List;
 
 @Service
 public class TechStackService {
+  
     @Autowired
     TechStackRepository techStackRepository;
 
@@ -40,3 +38,4 @@ public class TechStackService {
         techStackRepository.deleteById(id);
     }
 }
+

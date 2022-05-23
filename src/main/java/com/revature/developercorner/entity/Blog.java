@@ -3,6 +3,7 @@ package com.revature.developercorner.entity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -15,7 +16,7 @@ import java.sql.Timestamp;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-
+@ToString
 public class Blog {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -38,4 +39,8 @@ public class Blog {
         this.updated_at = updated_at;
         this.user_id = user_id;
     }
+
+
 }
+
+

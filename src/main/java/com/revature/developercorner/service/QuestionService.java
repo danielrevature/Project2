@@ -1,6 +1,5 @@
 package com.revature.developercorner.service;
 
-
 import com.revature.developercorner.data.QuestionRepository;
 import com.revature.developercorner.data.UserRepository;
 import com.revature.developercorner.entity.Question;

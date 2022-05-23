@@ -1,55 +1,41 @@
 package com.revature.developercorner.service;
 
-
 import com.revature.developercorner.data.UserRepository;
 import com.revature.developercorner.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.util.Optional;
+import java.util.List;
 
 @Service
 public class UserService {
-
-    //connection to the userrepository
     @Autowired
     UserRepository userRepository;
 
-    public void add_user(User user){
-        // check to see if user already exist:
-        Optional<User> user_By_Email = UserRepository.find_User_By_Email(user.getEMail());
-        if(user_By_Email.isPresent()){
-            throw new IllegalStateException("This Email is already in use!");
-        }
+    public List<User> getAll(){
+        return userRepository.findAll();
+    }
 
-
-        UserRepository.save(user);
-
+    public User getById(User user, Long id){
+        return userRepository.findById(id).get();
 
     }
 
-
-
-    public void user_LogIn(User user){
-        // check to see if user already exist:
-        Optional<User> user_By_Email = UserRepository.find_User_By_Email(user.getEMail());
-        if(!user_By_Email.isPresent()){
-            throw new IllegalStateException("The Email you used is not registered!");
-        }
-
-
-
-
-        UserRepository.save(user);
-
-
+    public User getByUserId(User user, Long id){
+        return userRepository.findById(id).get();
+    }
+    public User addUser(User user){
+        userRepository.save(user);
+        return (user);
+    }
+    public void update_user(User user, Long id) {
+        User userDB = userRepository.findById(id).get();
+        userDB.setUsername(user.getUsername());
+        userDB.setPassword(user.getPassword());
+        userDB.setEMail(user.getEMail());
+        userRepository.save(userDB);
     }
 
-
-
-
-
-
-
-
+    public void delete(Long id){
+        userRepository.deleteById(id);
+    }
 }
