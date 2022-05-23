@@ -2,51 +2,52 @@ package com.revature.developercorner.service;
 
 import com.revature.developercorner.data.BlogRepository;
 import com.revature.developercorner.entity.Blog;
-import com.revature.developercorner.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
-import java.util.Optional;
 
 @Service
-public class BlogService{
-    // automatically connects the blogRepository
+public class BlogService {
     @Autowired
     BlogRepository blogRepository;
-    public List<Blog> getAll() {
+
+    public Blog add_Post(Blog blog){
+        blogRepository.save(blog);
+        return blog;
+    }
+
+    public List<Blog> get_All_Posts(){
         return blogRepository.findAll();
     }
 
-    public Blog getById(Blog blog, Long id){
-        blogRepository.findById(id).get();
-        return blog;
 
+    public List<Blog> get_Post_custom(String flag) {
+        switch(flag){
+            case "new":
+                return blogRepository.findByDate();
+            case "old":
+                return blogRepository.findByDate();
+            default:
+                return get_All_Posts();
+        }
     }
 
 
-    public Blog getByUserId(Blog blog, Long id){
-        blogRepository.findById(id);
-        return blog;
-    }
-    public void addBlog(Blog blog) {
-        blogRepository.save(blog);
+    public Blog get_Post_by_id(Long id) {
+        return blogRepository.findById(id).get();
     }
 
-    public void update_blog(Blog blog, Long id) {
+    public Blog update_Post(Blog blog, Long id) {
         Blog blogDB = blogRepository.findById(id).get();
-        blogDB.setTitle(blog.getTitle());
-        blogDB.setContent(blog.getContent());
-        blogDB.setUpVotes(blog.getUpVotes());
-        blogDB.setDownVotes(blog.getDownVotes());
-        blogDB.setCreated_at(blog.getCreated_at());
-        blogDB.setUpdated_at(blog.getUpdated_at());
-        blogDB.setUser_id(blog.getUser_id());
+        blogDB.setPost(blog.getPost());
+        blogDB.setTime(blog.getTime());
+        blogDB.setAuthor(blog.getAuthor());
         blogRepository.save(blogDB);
+        return blogDB;
     }
 
-    public void delete(Long id) {
-        blogRepository.deleteById(id);
+    public void delete_post(Long id){ blogRepository.deleteById(id);
     }
-
 }
+
+
