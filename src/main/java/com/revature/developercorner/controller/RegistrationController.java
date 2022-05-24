@@ -11,14 +11,14 @@ import org.springframework.web.bind.annotation.RestController;
 // RegistrationController Class
 // This class will handle the HTTP Requests for the API/resource paths associated with registering new User objects.
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/register")
 public class RegistrationController {
 
     @Autowired
     UserService userService;
 
     // PostMapping to add a User to the database:
-    @PostMapping("/register")
+    @PostMapping("")
     public void add_user(@RequestBody User user) {
         userService.addUser(user);
     }
