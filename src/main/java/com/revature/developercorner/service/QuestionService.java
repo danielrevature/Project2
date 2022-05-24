@@ -9,48 +9,54 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+// QuestionService Class
+// This class will handle the business logic of the Question objects in the application.
 @Service
 public class QuestionService {
 
     @Autowired
     QuestionRepository questionRepository;
 
-    public Question add_Question(Question question){
+    // AddQuestion method
+    // This method will insert a new Question record in the database:
+    public Question addQuestion(Question question){
         questionRepository.save(question);
         return question;
     }
 
-    public List<Question> get_All_Questions(){
+    // GetAllQuestions method
+    // This method will retrieve a List object of Question objects from the database:
+    public List<Question> getAllQuestions(){
         return questionRepository.findAll();
     }
 
-
-    public List<Question> get_question_custom(String flag) {
-        switch(flag){
-            case "new":
-                return questionRepository.findByDate();
-            case "old":
-                return questionRepository.findByDate();
-            default:
-                return get_All_Questions();
-        }
-    }
-
-
-    public Question get_question_by_id(Long id) {
+    // GetQuestionById method
+    // This method will retrieve a Question object from the database with the supplied id and calling the
+    //  QuestionRepository and supplying the id into the findById method:
+    public Question getQuestionById(Long id) {
         return questionRepository.findById(id).get();
     }
 
-    public Question update_question(Question question, Long id) {
+    // UpdateQuestion method
+    // This method will update a Question record in the database by the supplied id:
+    public Question updateQuestion(Question question, Long id) {
+        // Get the database Question object by querying with the supplied id through the QuestionRepository:
         Question questionDB = questionRepository.findById(id).get();
+
+        // Set the database Question's attributes with the supplied Question object's attributes:
+        questionDB.setUserId(question.getUserId());
+        questionDB.setLanguage(question.getLanguage());
         questionDB.setQuestion(question.getQuestion());
-        questionDB.setTime(question.getTime());
-        questionDB.setAuthor(question.getAuthor());
+        questionDB.setUpdated_at(question.getUpdated_at());
+
+        // Call the QuestionRepository to update the record in the database:
         questionRepository.save(questionDB);
         return questionDB;
     }
 
-    public void delete_question(Long id) {
+    // DeleteQuestion method
+    // This method will delete the specified record with the supplied id:
+    public void deleteQuestion(Long id) {
         questionRepository.deleteById(id);
     }
 }
