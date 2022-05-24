@@ -24,7 +24,8 @@ public class TechStack {
     private String stack;
 
     //Constructor without ID:
-    public TechStack(String stack) {
+    public TechStack(Long userId, String stack) {
+        this.userId = userId;
         this.stack = stack;
     }
 }

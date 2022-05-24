@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 // This class will handle the HTTP Requests for the API/resource paths associated with Authentication and login for
 //  users in the application.
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/login")
 public class AuthenticationController {
 
     @Autowired
@@ -26,7 +26,7 @@ public class AuthenticationController {
     public SessionRegistry sessionRegistry;
 
     // PostMapping to submit a login request to sign the user into the application:
-    @PostMapping("/login")
+    @PostMapping("")
     public ResponseEntity<ResponseDto> login(@RequestBody User user) {
 
         // Call the AuthenticationManager to authenticate the user with a new token by supplying the username and

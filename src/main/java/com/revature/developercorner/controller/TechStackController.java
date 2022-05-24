@@ -10,37 +10,37 @@ import java.util.List;
 // This class will handle the HTTP Requests for the API/resource paths associated with the TechStack objects.
 @CrossOrigin(origins = "*")
 @RestController
-@RequestMapping(path = "/api")
+@RequestMapping(path = "/techstacks")
 public class TechStackController {
     @Autowired
     TechStackService techStackService;
 
     // PostMapping to add a TechStack to the database:
-    @PostMapping("/techstacks")
+    @PostMapping("")
     public void addTechStack(@RequestBody TechStack techStack) {
         techStackService.addTechStack(techStack);
     }
 
     // GetMapping to retrieve a specific TechStack object from the database:
-    @GetMapping("/techstacks/{id}")
+    @GetMapping("/{id}")
     public TechStack getTechStackById(@PathVariable("id") Long id) {
         return techStackService.getTechStackById(id);
     }
 
     // GetMapping to retrieve TechStack objects from the database:
-    @GetMapping("/techstacks")
+    @GetMapping("")
     public List<TechStack> getAllTechStacks() {
         return techStackService.getAllTechStacks();
     }
 
     // PutMapping to update a specified TechStack with the supplied JSON TechStack object in the database:
-    @PutMapping("/techstacks/{id}")
+    @PutMapping("/{id}")
     public void updateTechStack(@PathVariable("id") Long id, @RequestBody TechStack techStack) {
         techStackService.updateTechStack(techStack, id);
     }
 
     // DeleteMapping to delete a specified TechStack record from the database:
-    @DeleteMapping("/techstacks/{id}")
+    @DeleteMapping("/{id}")
     public void deleteTechStack(@PathVariable("id") Long id) {
         techStackService.deleteTechStack(id);
     }

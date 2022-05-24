@@ -25,7 +25,7 @@ public class TechStackService {
 
     // GetTechStackById method
     // This method will call the TechStackRepository to retrieve the specified TechStack by the provided id:
-    public TechStack getTechStackById(Long id) { return techStackRepository.getById(id); };
+    public TechStack getTechStackById(Long id) { return techStackRepository.findById(id).get(); };
 
     // GetAllTechStacks method
     // This method will call the TechStackRepository to retrieve the List of all TechStack objects in the database:
@@ -41,6 +41,7 @@ public class TechStackService {
 
         // Set the database's Stack name with the provided TechStack object's Stack name:
         techStackDB.setStack(techStack.getStack());
+        techStackDB.setUserId(techStack.getUserId());
 
         // Call the TechStackRepository to save the newly updated database TechStack object into the same record:
         techStackRepository.save(techStackDB);
