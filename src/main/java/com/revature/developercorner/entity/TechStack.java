@@ -3,11 +3,9 @@ package com.revature.developercorner.entity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.NonNull;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 //Lombok annotations
 @Data
@@ -16,9 +14,13 @@ import javax.persistence.Id;
 @Entity
 
 public class TechStack {
+
+    // Data members:
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Column(nullable = false)
+    private Long userId;
     private String stack;
 
     //Constructor without ID:
