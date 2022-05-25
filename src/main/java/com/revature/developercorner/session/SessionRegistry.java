@@ -35,7 +35,7 @@ public class SessionRegistry {
         return session_id;
     }
 
-    // GetUsernameForSessionMethod.
+    // GetUsernameForSession Method.
     // This method will get the username assigned to the particular HashMap session id in memory:
     public String getUsernameForSession(final String session_id) {
         return SESSIONS.get(session_id);
@@ -52,5 +52,13 @@ public class SessionRegistry {
         return new String(
                 Base64.getEncoder().encode(UUID.randomUUID().toString().getBytes(StandardCharsets.UTF_8))
         );
+    }
+
+    // RemoveSession Method.
+    // This method will take the sessionId that is supplied and remove it from memory:
+    public void removeSession(String sessionId) {
+        if(sessionId != null) {
+            SESSIONS.remove(sessionId);
+        }
     }
 }

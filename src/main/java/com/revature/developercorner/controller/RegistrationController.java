@@ -19,7 +19,13 @@ public class RegistrationController {
 
     // PostMapping to add a User to the database:
     @PostMapping("")
-    public void add_user(@RequestBody User user) {
+    public boolean add_user(@RequestBody User user) {
         userService.addUser(user);
+        User userDB = userService.loadUserByUsername(user.getUsername());
+        if (userDB.getUserId() != 0 || userDB.getUserId() != null) {
+            return true;
+        }else {
+            return false;
+        }
     }
 }
