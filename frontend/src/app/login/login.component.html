@@ -10,13 +10,16 @@
     <h1>Please provide login credentials:</h1>
     <form name="form" (ngSubmit)="login()" #f="ngForm">
         <div>
-            <label for="username">Username</label>
+            Username:
+            <br/>
             <input type="text" name="username" [(ngModel)]="model.username" #username="ngModel" required/>
         </div>
         <div>
-            <label for="password">Password</label>
+            Password:
+            <br/>
             <input type="password" name="password" [(ngModel)]="model.password" #password="ngModel" required/>
         </div>
+        <br/>
         <div>
             <button>Login</button>
         </div>

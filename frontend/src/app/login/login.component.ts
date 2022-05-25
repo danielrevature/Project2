@@ -27,7 +27,9 @@ export class LoginComponent implements OnInit {
       password: this.model.password
     }).subscribe(res => {
         if (res) {
-          this.sessionId = res.sessionId;
+          let session = res;
+          this.sessionId = session.session_id;
+          console.log(this.sessionId);
 
           sessionStorage.setItem(
             'token',
@@ -37,11 +39,6 @@ export class LoginComponent implements OnInit {
           sessionStorage.setItem(
             'username',
             this.model.username
-          );
-
-          sessionStorage.setItem(
-            'password',
-            this.model.password
           );
           this.router.navigate(['']);
         } else {

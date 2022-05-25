@@ -3,14 +3,12 @@ package com.revature.developercorner.controller;
 import com.revature.developercorner.dto.ResponseDto;
 import com.revature.developercorner.entity.User;
 import com.revature.developercorner.session.SessionRegistry;
+import org.hibernate.annotations.Parameter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 // AuthenticationController Class
 // This class will handle the HTTP Requests for the API/resource paths associated with Authentication and login for
@@ -24,6 +22,15 @@ public class AuthenticationController {
 
     @Autowired
     public SessionRegistry sessionRegistry;
+
+    // GetMapping to submit a logout request to sign the user out of the application.
+    // This will invalidate and remove the session stored in-memory on the backend:
+    @GetMapping("")
+    public void logout(@RequestHeader("Authorization") String sessionId) {
+        System.out.println(sessionId);
+        sessionRegistry.removeSession(sessionId);
+        System.out.println("User is signed out!");
+    }
 
     // PostMapping to submit a login request to sign the user into the application:
     @PostMapping("")
