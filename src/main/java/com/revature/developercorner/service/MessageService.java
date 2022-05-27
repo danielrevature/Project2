@@ -37,8 +37,8 @@ public class MessageService {
     // GetAllMessagesByUser method
     // This method will retrieve List of Messages from the database by calling the MessageRepository and using the
     //  findBySender method which will supply the userId to the method:
-    public List<Message> getAllMessagesByUser(Long userId) {
-        return messageRepository.findBySender(userId);
+    public List<Message> getAllMessagesByRecipient(Long userId) {
+        return messageRepository.findByRecipient(userId);
     }
 
     // UpdateMessage method

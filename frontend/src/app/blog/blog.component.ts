@@ -8,13 +8,19 @@ import { Router } from '@angular/router';
 })
 export class BlogComponent implements OnInit {
 
+  model:any = {
+
+  }
+
   constructor(private router: Router) { }
 
   ngOnInit(): void {
   }
 
-  viewBlog() {
-    this.router.navigate(['/devcorn/addblog']);
+  searchBlogs() {
+    localStorage.setItem('blog-search-userId', this.model.userId);
+    let blogElement:any = document.getElementById('blogsTables');
+    blogElement.style.display="block";
   }
 
   addBlog() {

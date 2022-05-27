@@ -16,7 +16,8 @@ export class UserdetailsComponent implements OnInit {
     username: '',
     password: '',
     role: '',
-    email: ''
+    email: '',
+    timeAvailable: ''
   }
 
   // public currentUsername = sessionStorage.getItem('username');
@@ -26,57 +27,30 @@ export class UserdetailsComponent implements OnInit {
   constructor(private http: HttpClient, private router: Router) { }
 
   ngOnInit(): void {
-    this.getUserDetails();
+    this.checkRole();
+    this.displayUserDetails();
   }
 
-  getUserDetails() {
-    let currentUsername = sessionStorage.getItem('username');
-    let address = "/api/session/" + currentUsername;
-    let header = new Headers();
-    let sessionId:any = sessionStorage.getItem('token');
-    header.set("Authorization", sessionId);
-    this.http.get<any>(address).subscribe(res => {
-      if (res) {
-        console.log(res);
-        let user = res;
-        let role = user.role;
-        localStorage.setItem('userId', user.userId);
-        localStorage.setItem('user-username', user.username);
-        localStorage.setItem('user-password', user.password);
-        localStorage.setItem('user-role', role.role_name);
-        localStorage.setItem('user-email', user.email);
-      }
-    })
-  }
-
-  displayUserDetails() {
-    let btnDetails = document.getElementById("userDetailsButton");
-
-    if(!this.showDetails) {
-      let newId:any = localStorage.getItem('userId');
-      let newUsername:any = localStorage.getItem('user-username');
-      let newPassword:any = localStorage.getItem('user-password');
-      let newRole:any = localStorage.getItem('user-role');
-      let newEmail:any = localStorage.getItem('user-email');
-
-      this.user.id = newId;
-      this.user.username = newUsername;
-      this.user.password = newPassword;
-      this.user.role = newRole;
-      this.user.email = newEmail;
-
-      btnDetails!.innerText = 'Click Me to Hide User Details!';
-      this.showDetails = true;
-    }else {
-      this.user.id = 0;
-      this.user.username = '';
-      this.user.password = '';
-      this.user.role = '';
-      this.user.email = '';
-
-      btnDetails!.innerText = 'Click Me to Show User Details!';
-      this.showDetails = false;
+  checkRole() {
+    if(localStorage.getItem('user-role') != 'MENTOR') {
+      let element = document.getElementById('mentor');
+      element!.innerHTML = '';
     }
   }
 
+  displayUserDetails() {
+    let newId:any = localStorage.getItem('userId');
+    let newUsername:any = localStorage.getItem('user-username');
+    let newPassword:any = localStorage.getItem('user-password');
+    let newRole:any = localStorage.getItem('user-role');
+    let newEmail:any = localStorage.getItem('user-email');
+    let newTimeAvailable:any = localStorage.getItem('user-availability');
+
+    this.user.id = newId;
+    this.user.username = newUsername;
+    this.user.password = newPassword;
+    this.user.role = newRole;
+    this.user.email = newEmail;
+    this.user.timeAvailable = newTimeAvailable;
+  }
 }

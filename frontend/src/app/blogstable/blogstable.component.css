@@ -1,0 +1,12 @@
+#blogView {
+    display: none;
+    margin-bottom: 1%;
+}
+
+#blogLabel {
+    font-size: larger;
+}
+
+textarea {
+    resize: none;
+}

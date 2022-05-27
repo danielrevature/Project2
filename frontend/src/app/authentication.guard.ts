@@ -12,12 +12,32 @@ export class AuthenticationGuard implements CanActivate {
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
+      let token = null;
     
-      if (state.url == '/login' || state.url == '/logout' || state.url == '/register' || state.url == '/') {
+      if (state.url == '/login'  || state.url == '/register' || state.url == '/') {
         return true;
       }
 
-      let token = sessionStorage.getItem('token');
+      token = sessionStorage.getItem('token');
+
+      if (state.url == '/logout' && !token) {
+        return this.router.parseUrl('');
+      }
+
+      if (state.url == '/devcorn/**' && !token) {
+        return this.router.parseUrl('/login');
+      }
+
+      if (state.url == '/messages' && !token) {
+        return this.router.parseUrl('');
+      }
+
+      if (state.url == '/mentor' && token) {
+        let role = localStorage.getItem('user-role');
+        if(role != "MENTOR") {
+          return this.router.parseUrl('');
+        }
+      }
 
       if (!token) {
         return this.router.parseUrl('/login');

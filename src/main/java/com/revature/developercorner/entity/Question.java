@@ -23,14 +23,16 @@ public class Question {
     private Long userId;
     private String language;
     private String question;
+    private String suggestion;
     private Timestamp created_at;
     private Timestamp updated_at;
 
     //Constructor without ID:
-    public Question(Long userId, String language, String question, Timestamp created_at, Timestamp updated_at) {
+    public Question(Long userId, String language, String question, String suggestion, Timestamp created_at, Timestamp updated_at) {
         this.userId = userId;
         this.language = language;
         this.question = question;
+        this.suggestion = suggestion;
         this.created_at = created_at;
         this.updated_at = updated_at;
     }

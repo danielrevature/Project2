@@ -66,6 +66,12 @@ public class SessionFilter extends OncePerRequestFilter {
         // Get the User object by calling the UserService object and calling the 'loadUserByUsername' method:
         final User user = userService.loadUserByUsername(username);
 
+        // Return from here if there is no user to load to prevent unauthorized access:
+        if(user == null) {
+            filterChain.doFilter(request, response);
+            return;
+        }
+
         // Set the authentication token by creating a new one and supplying the User object and the user's authorities:
         UsernamePasswordAuthenticationToken auth = new UsernamePasswordAuthenticationToken(
                 user,

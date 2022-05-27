@@ -1,0 +1,43 @@
+<section id="top_blog_section"></section>
+<div>
+    <table class="table">
+        <thead>
+            <th scope="col">#</th>
+            <th scope="col">User</th>
+            <th scope="col">Title</th>
+            <th scope="col">Content</th>
+            <th scope="col">View</th>
+        </thead>
+        <tbody>
+            <tr scope="row" class = "message" *ngFor="let blog of blogs">
+                <td>{{blog.id}}</td>
+                <td>{{blog.userId}}</td>
+                <td>{{blog.title}}</td>
+                <td>{{blog.content}}</td>
+                <td><a href="/devcorn/blog#blog_section"  (click)="viewBlog(blog.id, blog.userId, blog.title, blog.content, blog.upVotes, blog.downVotes)">View</a></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<hr>
+<section id="blog_section"></section>
+<div id="blogView">
+    <div class="answerDiv">
+        <p>
+            <span id="blogLabel">User:</span>&nbsp;<span id="blogUserId"></span>
+        </p>
+        <p>
+            <span id="blogLabel">Title:</span>&nbsp;<span id="blogTitle"></span>
+        </p>
+    <form class="blog" (ngSubmit)="closeBlog()" #f="ngForm" ngNativeValidate>
+        <textarea id="blogText" name="blogText" cols="100" rows="10" disabled></textarea>
+        <p>
+            Upvotes:&nbsp;<span id="upVotes"></span>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;Downvotes:&nbsp;<span id="downVotes"></span>
+        </p>
+        <p>
+            <button id="upBtn" (click)="upVote()">Upvote</button>&nbsp;&nbsp;&nbsp;<button id="dwnBtn" (click)="downVote()">Downvote</button>
+        </p>
+        <br>
+        <button>Close</button>
+    </form>
+</div>

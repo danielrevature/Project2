@@ -17,8 +17,9 @@ public class UserController {
 
     // PostMapping to add a User to the database:
     @PostMapping("")
-    public void addUser(@RequestBody User user) {
+    public Boolean addUser(@RequestBody User user) {
         userService.addUser(user);
+        return true;
     }
 
     // GetMapping to retrieve User objects from the database:
@@ -29,22 +30,22 @@ public class UserController {
 
     // GetMapping to retrieve a specific User object from the database:
     @GetMapping("/{userId}")
-    public User getUser(@PathVariable("userId") Long userId) {
+    public User getUserById(@PathVariable("userId") Long userId) {
         return userService.getById(userId);
     }
 
     // PutMapping to update a specified User with the supplied JSON User object in the database:
     @PutMapping("/{userId}")
-    public void updateUser(@PathVariable("userId") Long userId, @RequestBody User user) {
+    public Boolean updateUser(@PathVariable("userId") Long userId, @RequestBody User user) {
         userService.updateUser(userId, user);
+        return true;
     }
 
     // DeleteMapping to delete a specified user from the database:
     @DeleteMapping("/{userId}")
-    public void deleteUser(@PathVariable("userId") Long userId) {
+    public Boolean deleteUser(@PathVariable("userId") Long userId) {
         userService.deleteUser(userId);
+        return true;
     }
 
 }
-
-

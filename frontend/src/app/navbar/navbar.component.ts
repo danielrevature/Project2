@@ -16,10 +16,19 @@ export class NavbarComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.checkIfSignedIn();
   }
 
   logout() {
-    this.router.navigate(['/login']);
+    this.router.navigate(['/logout']);
+  }
+
+  checkIfSignedIn() {
+    let sessionId = sessionStorage.getItem('token');
+    if(sessionId != null) {
+      let logoutBtn = document.getElementById('logout');
+      logoutBtn!.style.display="block";
+    }
   }
 
 }

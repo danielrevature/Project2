@@ -41,7 +41,7 @@ public class QuestionController {
     }
 
     // DeleteMapping to delete a specified Question record from the database:
-    @DeleteMapping("/questions{id}")
+    @DeleteMapping("/{id}")
     public void deleteQuestion(@PathVariable("id") Long id) {
         questionService.deleteQuestion(id);
     }

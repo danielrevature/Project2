@@ -1,51 +1,27 @@
 <div class="container-fluid">
-    <form>
+    <form (ngSubmit)="searchBlogs()" #f="ngForm" ngNativeValidate>
         <H2>Search Blog</H2>
         <div class="form-group row">
             <label for="inputEmail3" class="col-sm-2 col-form-label">User</label>
             <div class="col-sm-10">
-                <input type="text" class="form-control" id="inputEmail3" placeholder="Enter user">
+                <input type="text" class="form-control" id="inputEmail3" name="userId" [(ngModel)]="model.userId" #userId="ngModel" placeholder="Enter user" required>
             </div>
         </div>
         <div class="form-group row">
             <label for="inputEmail3" class="col-sm-2 col-form-label">Title</label>
             <div class="col-sm-10">
-                <input type="text" class="form-control" id="inputEmail3" placeholder="Enter title">
+                <input type="text" class="form-control" id="inputEmail3" name="title" [(ngModel)]="model.title" #title="ngModel" placeholder="Enter title">
             </div>
         </div>
         <div class="form-group row">
             <div class="col-sm-10">
-                <button type="submit" class="btn btn-primary">Search</button> &nbsp;&nbsp;
-                <button type="submit" class="btn btn-primary" (click)="addBlog()">Add Blog</button>
-            </div> 
+                <button type="submit" class="btn btn-primary" (focus)="blogs.searchForBlogs(model.userId)">Search</button>&nbsp;&nbsp;
+                <button id="btnAddBlog" type="a" class="btn btn-primary" (click)="addBlog()">Add Blog</button>
+            </div>
         </div>
-
-        <table class="table">
-            <thead>
-                <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">User</th>
-                    <th scope="col">Title</th>
-                    <th scope="col">Content</th>
-                    <th scope="col">View</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <th scope="row">1</th>
-                    <td>User 1</td>
-                    <td>Title 1</td>
-                    <td>Content 1..</td>
-                    <td><a href="javascript: void(0);"  (click)="viewBlog()">View</a></td>
-                </tr>
-                <tr>
-                    <th scope="row">2</th>
-                    <td>User 2</td>
-                    <td>Title 2</td>
-                    <td>Content 2..</td>
-                    <td><a href="javascript: void(0);"  (click)="viewBlog()">View</a></td>
-                </tr>
-            </tbody>
-        </table>
     </form>
+    <hr>
+    <div id="blogsTables">
+        <app-blogstable #blogs></app-blogstable>
+    </div>
 </div>

@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 
 @Component({
@@ -9,9 +10,11 @@ import { Router } from '@angular/router';
 })
 export class LogoutComponent implements OnInit {
 
-  constructor(private http: HttpClient, private router: Router) { }
+  constructor(private http: HttpClient, private router: Router,
+    private title:Title) { }
 
   ngOnInit(): void {
+    this.title.setTitle('Sign Out');
     this.logout();
   }
 
@@ -25,14 +28,15 @@ export class LogoutComponent implements OnInit {
     }
 
     header.set("Authorization", sessionId);
-    this.http.get<any>("/api/login").subscribe(res => {
-      if (res) {
-        console.log(res);
-      }
-    })
+    
+    this.http.get<any>("/api/login").subscribe();
 
     localStorage.clear();
     sessionStorage.clear();
+
+    window.setTimeout(function() {
+      window.location.href = '';
+    }, 3000);
   }
 
 }

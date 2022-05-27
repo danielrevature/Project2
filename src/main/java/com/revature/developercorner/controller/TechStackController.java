@@ -27,6 +27,12 @@ public class TechStackController {
         return techStackService.getTechStackById(id);
     }
 
+    // GetMapping to retrieve all TechStacks for a specific user from the database:
+    @GetMapping("/user/{userId}")
+    public List<TechStack> getTechStacksByUserId(@PathVariable("userId") Long userId) {
+        return techStackService.getTechStacksByUserId(userId);
+    }
+
     // GetMapping to retrieve TechStack objects from the database:
     @GetMapping("")
     public List<TechStack> getAllTechStacks() {

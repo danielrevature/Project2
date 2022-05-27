@@ -1,40 +1,65 @@
-<div class="container-fluid">
-    <form>
-        <div class="form-group row">
-            <label for="inputEmail3" class="col-sm-2 col-form-label">Teaching time</label>
-            <div class="col-sm-10">
-                <input type="text" class="form-control" id="inputEmail3" placeholder="data and time">
-            </div>
-        </div>
-        <div class="form-group row">
-            <label for="inputEmail3" class="col-sm-2 col-form-label">Experience</label>
-            <div class="col-sm-10">
-                <input type="text" class="form-control" id="inputEmail3" placeholder="Enter Experience">
-            </div>
-        </div>
-        <fieldset class="form-group">
-            <div class="row">
-                <legend class="col-form-label col-sm-2 pt-0">Programming Languages</legend>
+<body>
+    <div class="container-fluid">
+        <form name="form" (ngSubmit)="updateDetails()" #f="ngForm" ngNativeValidate>
+            <div class="form-group row">
+                <label for="inputEmail3" class="col-sm-2 col-form-label">Username</label>
                 <div class="col-sm-10">
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" id="gridCheck1">
-                        <label class="form-check-label" for="gridCheck1">
-                            Java
-                        </label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" id="gridCheck2">
-                        <label class="form-check-label" for="gridCheck2">
-                            Angular
-                        </label>
-                    </div>
+                    <input type="text" class="form-control" id="inputEmail3" name="username" [(ngModel)]="user.username" #email="ngModel" placeholder="username">
                 </div>
             </div>
-        </fieldset>
-        <div class="form-group row">
-            <div class="col-sm-10">
-                <button type="submit" class="btn btn-primary">Save</button>
+            <div class="form-group row">
+                <label for="inputEmail3" class="col-sm-2 col-form-label">Password</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="inputEmail3" name="password" [(ngModel)]="user.password" #email="ngModel" placeholder="password">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="inputEmail3" class="col-sm-2 col-form-label">Email</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="inputEmail3" name="email" [(ngModel)]="user.email" #email="ngModel" placeholder="email@site.com">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="inputEmail3" class="col-sm-2 col-form-label">Time Available</label>
+                <div class="col-sm-10">
+                    <input type="radio" id="morning" name="morning" value="morning" [(ngModel)]="user.timeAvailable" #role="ngModel">
+                    <label for="morning">Morning</label><br>
+                    <input type="radio" id="afternoon" name="afternoon" value="afternoon" [(ngModel)]="user.timeAvailable" #role="ngModel">
+                    <label for="afternoon">Afternoon</label><br>
+                    <input type="radio" id="evening" name="evening" value="evening" [(ngModel)]="user.timeAvailable" #role="ngModel">
+                    <label for="evening">Evening</label><br>
+                </div>
+            </div>
+            <fieldset class="form-group">
+                <div class="row">
+                    <div id="mentor">
+                        <h2>Languages:</h2>
+                        <app-techstacks></app-techstacks>
+                    </div>
+                </div>
+            </fieldset>
+            <div class="form-group row">
+                <div class="col-sm-10">
+                    <button type="submit" class="btn btn-primary">Save</button>
+                </div>
+            </div>
+        </form>
+        <div>
+            <br/>
+            <h2>Delete Account</h2>
+            *To delete account, enter "deleteMyAccount":
+            <br/><br/>
+            <div>
+                <form name="form" (ngSubmit)="deleteAccount()" #f="ngForm" ngNativeValidate>
+                    <div>
+                        <input type="text" name="deleteText" [(ngModel)]="modelDeleteAccount.deleteText" required/>
+                    </div>
+                    <br/>
+                    <div>
+                        <button id="deleteButton">Delete Account</button>
+                    </div>
+                </form>
             </div>
         </div>
-    </form>
-</div>
+    </div>
+</body>

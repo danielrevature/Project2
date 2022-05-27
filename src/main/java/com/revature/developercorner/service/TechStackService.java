@@ -27,6 +27,12 @@ public class TechStackService {
     // This method will call the TechStackRepository to retrieve the specified TechStack by the provided id:
     public TechStack getTechStackById(Long id) { return techStackRepository.findById(id).get(); };
 
+    // GetTechStacksByUserId method
+    // This method will call the TechStackRepository to retrieve a List of TechStacks the user knows from database:
+    public List<TechStack> getTechStacksByUserId(Long userId) {
+        return techStackRepository.findByUserId(userId);
+    }
+
     // GetAllTechStacks method
     // This method will call the TechStackRepository to retrieve the List of all TechStack objects in the database:
     public List<TechStack> getAllTechStacks(){
