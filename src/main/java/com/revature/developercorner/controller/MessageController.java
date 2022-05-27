@@ -29,8 +29,8 @@ public class MessageController {
 
     // GetMapping to retrieve Message objects for a specified User from the database:
     @GetMapping("/user/{userId}")
-    public List<Message> getAllMessagesByUser(@PathVariable("userId") Long userId) {
-        return messageService.getAllMessagesByUser(userId);
+    public List<Message> getAllMessagesByRecipient(@PathVariable("userId") Long userId) {
+        return messageService.getAllMessagesByRecipient(userId);
     }
 
     // GetMapping to retrieve Message objects from the database:

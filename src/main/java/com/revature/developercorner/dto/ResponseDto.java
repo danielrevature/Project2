@@ -1,5 +1,7 @@
 package com.revature.developercorner.dto;
 
+import com.revature.developercorner.entity.User;
+
 // ReponseDto Class
 // This class will handle the Data Transfer between objects in the application.
 // This class is used for getting and setting the session id for the HTTP Response for users that try to log
@@ -8,6 +10,21 @@ public class ResponseDto {
 
     // Declare String for session id:
     private String session_id;
+
+    // Declare User for session:
+    private User sessionUser;
+
+    // GetSessionUser method
+    // This will return the session user:
+    public User getSessionUser() {
+        return sessionUser;
+    }
+
+    // SetSessionUser method
+    // This will set the session user with the supplied user object:
+    public void setSessionUser(User sessionUser) {
+        this.sessionUser = sessionUser;
+    }
 
     // GetSessionId method
     // This will return the session id:

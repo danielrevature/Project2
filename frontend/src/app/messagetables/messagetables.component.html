@@ -1,0 +1,31 @@
+<div>
+    <table class="table">
+        <thead>
+            <th scope="col">Id</th>
+            <th scope="col">Sender</th>
+            <th scope="col">Message</th>
+        </thead>
+        <tbody>
+            <tr scope="row" class = "message" *ngFor="let message of messages">
+                <td>{{message.id}}</td>
+                <td>{{message.sender}}</td>
+                <td>{{message.message}}</td>
+                <br>
+                <div class="btn_answer">
+                    <button (click)="selectMessage(message.id, message.sender)">Respond</button>
+                </div>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<hr>
+<section id="respond_section"></section>
+<div id="respondToMsg">
+    <div class="answerDiv">
+    <h2>Response:</h2>
+    <form class="answer" (ngSubmit)="sendMessage()" #f="ngForm" ngNativeValidate>
+        <textarea class="answerbox" name="answerbox" [(ngModel)]="message.message" cols="100" rows="10"></textarea>
+        <br>
+        <button>Send</button>
+    </form>
+</div>

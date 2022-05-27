@@ -26,7 +26,7 @@ const routes: Routes = [
         {path: 'messages', component: MessagesComponent},
         {path: 'blog', component: BlogComponent},
         {path: 'addblog', component: AddblogComponent},
-        
+
       ]
     },
 

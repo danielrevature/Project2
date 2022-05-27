@@ -4,6 +4,9 @@ import com.revature.developercorner.data.BlogRepository;
 import com.revature.developercorner.entity.Blog;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.sql.Timestamp;
+import java.time.LocalDateTime;
 import java.util.List;
 
 // BlogService Class
@@ -16,6 +19,10 @@ public class BlogService {
     // AddPost method
     // This method will call the BlogRepository to insert the supplied Blog object into the database:
     public Blog addPost(Blog blog){
+        // Change created_at to reflect the current time:
+        Timestamp currentTime = Timestamp.valueOf(LocalDateTime.now());
+        blog.setCreated_at(currentTime);
+        blog.setUpdated_at(null);
         blogRepository.save(blog);
         return blog;
     }
@@ -50,8 +57,11 @@ public class BlogService {
         blogDB.setContent(blog.getContent());
         blogDB.setUpVotes(blog.getUpVotes());
         blogDB.setDownVotes(blog.getDownVotes());
-        blogDB.setUpdated_at(blog.getUpdated_at());
         blogDB.setUserId(blog.getUserId());
+
+        // Change created_at to reflect the current time:
+        Timestamp currentTime = Timestamp.valueOf(LocalDateTime.now());
+        blogDB.setUpdated_at(currentTime);
 
         // Call the BlogRepository to update the record in the database with the newly updated
         // database Blog object:

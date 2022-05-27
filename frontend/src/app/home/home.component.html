@@ -1,11 +1,43 @@
-<form class="form-signin">
-    <div class="text-center">
-        <div class="form-outline mb-4">
-            Deceloper' Corner Front Page
-        </div>
-        <div class="form-outline mb-4">
-            <button class="button button1" (click)="login()">Login</button>&nbsp;
-            <button class="button button1" (click)="signup()">Sign up</button>
-        </div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+</head>
+<body>
+    <app-navbar></app-navbar>
+    <h1>Welcome to Developer's Corner!</h1>
+    <p>This website is about developers who want to learn how to code, as well as those who want to teach.</p>
+    <p>We have a large variety of Mentors who know:</p>
+    <div id="list">
+        <ul>
+            <li>C</li>
+            <li>C++</li>
+            <li>C#</li>
+            <li>Java</li>
+            <li>HTML</li>
+            <li>Ruby</li>
+            <li>Python</li>
+            <li>Angular</li>
+            <li>... And so much more!</li>
+        </ul>
     </div>
-</form>
+    <p>Please sign up and become a Learner or Mentor today!</p>
+    <form class="form-signin">
+        <div class="text-center">
+            <div class="form-outline mb-4">
+            </div>
+            <div class="form-outline mb-4">
+                <div id="logSignBtn">
+                    <button class="button button1" (click)="login()">Login</button>&nbsp;
+                    <button class="button button1" (click)="signup()">Sign up</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</body>
+<hr>
+<footer>&copy; 2022 Revature</footer>
+</html>

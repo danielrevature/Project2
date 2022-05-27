@@ -2,6 +2,7 @@ package com.revature.developercorner.controller;
 
 import com.revature.developercorner.dto.ResponseDto;
 import com.revature.developercorner.entity.User;
+import com.revature.developercorner.service.UserService;
 import com.revature.developercorner.session.SessionRegistry;
 import org.hibernate.annotations.Parameter;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,13 +24,14 @@ public class AuthenticationController {
     @Autowired
     public SessionRegistry sessionRegistry;
 
+    @Autowired
+    UserService userService;
+
     // GetMapping to submit a logout request to sign the user out of the application.
     // This will invalidate and remove the session stored in-memory on the backend:
     @GetMapping("")
     public void logout(@RequestHeader("Authorization") String sessionId) {
-        System.out.println(sessionId);
         sessionRegistry.removeSession(sessionId);
-        System.out.println("User is signed out!");
     }
 
     // PostMapping to submit a login request to sign the user into the application:
@@ -49,6 +51,8 @@ public class AuthenticationController {
         // Create a new ResponseDto object and set the session id of it with the new session id:
         ResponseDto response = new ResponseDto();
         response.setSession_id(session_id);
+        user = userService.loadUserByUsername(user.getUsername());
+        response.setSessionUser(user);
 
         // Call the ResponseEntity to create a response with the status code 'OK' and supply the ResponseDto object
         //  to it, and return it:

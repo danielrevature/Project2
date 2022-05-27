@@ -1,0 +1,25 @@
+<table>
+    <thead>
+        <th>Id</th>
+        <th>Stack</th>
+        <th></th>
+    </thead>
+
+    <tbody>
+        <tr class = "techStack" *ngFor="let techStack of techStacks">
+            <td>{{techStack.id}}</td>
+            <td>{{techStack.stack}}</td>
+            <td><button (click)="deleteStack(techStack.id)">Delete</button></td>
+        </tr>
+    </tbody>
+</table>
+TechStack:
+<form name="form" (ngSubmit)="addStack()" #f="ngForm" ngNativeValidate>
+    <div>
+        <input type="text" name="addStack" [(ngModel)]="techStack.stack" required/>
+    </div>
+    <br/>
+    <div>
+        <button>Add</button>
+    </div>
+</form>

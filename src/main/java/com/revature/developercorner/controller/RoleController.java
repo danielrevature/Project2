@@ -43,6 +43,7 @@ public class RoleController {
 
     // DeleteMapping to delete a specified Role record from the database:
     @DeleteMapping("/{id}")
-    public void deleteRole(@PathVariable("id") Long id) {roleService.deleteRole(id);}
-
+    public void deleteRole(@PathVariable("id") Long id) {
+        roleService.deleteRole(id);
+    }
 }

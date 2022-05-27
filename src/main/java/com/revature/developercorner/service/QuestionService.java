@@ -7,6 +7,8 @@ import com.revature.developercorner.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.sql.Timestamp;
+import java.time.LocalDateTime;
 import java.util.List;
 
 // QuestionService Class
@@ -20,6 +22,10 @@ public class QuestionService {
     // AddQuestion method
     // This method will insert a new Question record in the database:
     public Question addQuestion(Question question){
+        // Change created_at to reflect the current time:
+        Timestamp currentTime = Timestamp.valueOf(LocalDateTime.now());
+        question.setCreated_at(currentTime);
+        question.setUpdated_at(null);
         questionRepository.save(question);
         return question;
     }
@@ -47,7 +53,11 @@ public class QuestionService {
         questionDB.setUserId(question.getUserId());
         questionDB.setLanguage(question.getLanguage());
         questionDB.setQuestion(question.getQuestion());
-        questionDB.setUpdated_at(question.getUpdated_at());
+        questionDB.setSuggestion(question.getSuggestion());
+
+        // Change the updated_at to reflect the updated time:
+        Timestamp currentTime = Timestamp.valueOf(LocalDateTime.now());
+        questionDB.setUpdated_at(currentTime);
 
         // Call the QuestionRepository to update the record in the database:
         questionRepository.save(questionDB);

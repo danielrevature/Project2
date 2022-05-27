@@ -17,6 +17,10 @@ import { QuestionsComponent } from './questions/questions.component';
 import { MessagesComponent } from './messages/messages.component';
 import { BlogComponent } from './blog/blog.component';
 import { AddblogComponent } from './addblog/addblog.component';
+import { TechstacksComponent } from './techstacks/techstacks.component';
+import { QuestiontablesComponent } from './questiontables/questiontables.component';
+import { MessagetablesComponent } from './messagetables/messagetables.component';
+import { BlogstableComponent } from './blogstable/blogstable.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +36,10 @@ import { AddblogComponent } from './addblog/addblog.component';
     MessagesComponent,
     BlogComponent,
     AddblogComponent,
+    TechstacksComponent,
+    QuestiontablesComponent,
+    MessagetablesComponent,
+    BlogstableComponent,
   ],
   imports: [
     BrowserModule,

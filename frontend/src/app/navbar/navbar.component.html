@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="#" [routerLink]="['/devcorn/userdashboard']">Dashboard</a>
+    <a class="navbar-brand" href="/devcorn/userdashboard">Dashboard</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -8,18 +8,20 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item">
-                <a class="nav-link" href="#" [routerLink]="['/devcorn/messages']">Messages</a>
+                <a class="nav-link" href="/devcorn/messages">Messages</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#" [routerLink]="['/devcorn/questions']">Questions</a>
+                <a class="nav-link" href="/devcorn/questions">Questions</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#" [routerLink]="['/devcorn/blog']">Blog</a>
+                <a class="nav-link" href="/devcorn/blog">Blog</a>
             </li>
         </ul>
-        <form class="form-inline my-2 my-lg-0">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit" (click) = "logout()">Logout</button>
-        </form>
+        <div id="logout">
+            <form class="form-inline my-2 my-lg-0">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit" (click) = "logout()">Logout</button>
+            </form>
+        </div>
     </div>
 </nav>
 

@@ -1,0 +1,38 @@
+<div>
+    <table class="table">
+        <thead>
+            <th scope="col">Id</th>
+            <th scope="col">UserId</th>
+            <th scope="col">Language</th>
+            <th scope="col">Question</th>
+            <th scope="col">Suggestion</th>
+            <th scope="col">Posted</th>
+        </thead>
+        <tbody>
+            <tr scope="row" class = "question" *ngFor="let question of questions">
+                <td>{{question.id}}</td>
+                <td>{{question.userId}}</td>
+                <td>{{question.language}}</td>
+                <td>{{question.question}}</td>
+                <td>{{question.suggestion}}</td>
+                <td>{{question.created_at}}</td>
+                <br>
+                <div class="btn_answer">
+                    <button (click)="selectAnswer(question.id, question.userId, question.language, 
+                    question.question, question.created_at)">Answer</button>
+                </div>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<hr>
+<section id="answer_section"></section>
+<div id="answerQuestion">
+    <div class="answerDiv">
+    <h2>Answer</h2>
+    <form class="answer" (ngSubmit)="answerQuestion()" #f="ngForm" ngNativeValidate>
+        <textarea class="answerbox" name="answerbox" [(ngModel)]="question.suggestion" cols="100" rows="10"></textarea>
+        <br>
+        <button>Submit</button>
+    </form>
+</div>
