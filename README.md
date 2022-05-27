@@ -11,7 +11,7 @@ Project Description:
 
 #
 
-## Project User Stores:
+## Project User Stories:
 1)	User can sign up a new account.
 2)	User can set account to new learner or mentor.
 3)	User can set their time to learn (day/night).
